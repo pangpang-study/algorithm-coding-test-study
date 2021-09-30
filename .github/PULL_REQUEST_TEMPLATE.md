@@ -1,12 +1,3 @@
----
-name: Study PR Template
-about: 매주 정해지는 3문제에 대한 풀이 작성
-title: "[YYMMDD] - 내이름"
-labels: develop
-assignees: ''
-
----
-
 ### 한 줄 소감
 `한 줄 소감을 쓰시오`
 

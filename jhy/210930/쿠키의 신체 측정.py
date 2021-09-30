@@ -1,4 +1,5 @@
 import sys
+#from pprint import pprint
 
 def heart(n):
     for j in range(n):
@@ -12,10 +13,12 @@ def left_arm(n):
     length = 0
     (x, y) = heart(n)
     x -= 1
-    while True:       
+    while True:      
         if array[y][x] == '*':
             x -= 1
             length += 1
+            if x == -1:
+                return length
         else:
             return length
 
@@ -27,6 +30,8 @@ def right_arm(n):
         if array[y][x] == '*':
             x += 1
             length += 1
+            if x == n:
+                return length
         else:
             return length
 
@@ -72,9 +77,11 @@ def right_leg(n):
 n = int(sys.stdin.readline())
 
 global array
-array = [list(map(str, sys.stdin.readline())) for i in range(n)]
+array = [list(map(str, sys.stdin.readline().rstrip())) for i in range(n)]
 
 (x, y) = heart(n)
+#pprint(array)
+#print(array)
 print(str(y + 1), str(x + 1), end=" ")
 print(end='\n')
 print(left_arm(n), right_arm(n), waist(n), left_leg(n), right_leg(n))

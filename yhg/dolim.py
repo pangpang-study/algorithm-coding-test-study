@@ -1,6 +1,5 @@
 import sys
 from collections import deque
-from typing import Counter
 input = sys.stdin.readline
 
 n,k = map(int, input().split())

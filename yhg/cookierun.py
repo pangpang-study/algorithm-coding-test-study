@@ -2,6 +2,11 @@ import sys
 input = sys.stdin.readline
 n = int(input())
 
+def find_Head(board):
+    for i in range(n):
+        for j in range(n):
+             if board[i][j] == "*":
+                 return [i,j]
 board = []
 for i in range(n):
     board.append(list(input().rstrip()))
@@ -12,19 +17,7 @@ right_leg = []
 hurry = []
 break_flag = False
 
-for i in range(n):
-    
-    if break_flag:
-        break
-    
-    
-    for j in range(n):
-        if board[i][j] == "*":
-            head = [i,j]
-            break_flag = True
-            break
-
-
+head = find_Head(board)
 heart = [head[0] +1  , head[1] ]
 
 left_leg_length = 0

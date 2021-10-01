@@ -38,8 +38,6 @@ def solution(n, m):
     visited = [[[False] * m for _ in range(n)] for _ in range(4)]
 
     for air_x, air_y in aircons:
-        if air_x < 0 and air_y < 0:
-            continue
         # 2. 4방향 탐색
         for i in range(4):
             visited[i][air_x][air_y] = True

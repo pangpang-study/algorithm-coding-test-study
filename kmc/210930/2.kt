@@ -1,3 +1,5 @@
+// 빗물
+
 fun main() {
     val w = readLine()!!.split(" ").last().toInt()
     val field = readLine()!!.split(" ").map { it.toInt() }

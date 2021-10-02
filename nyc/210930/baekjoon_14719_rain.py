@@ -11,8 +11,7 @@ def solution(h, w):
                 started = True
                 answer += count
                 count = 0
-                continue
-            if started:
+            elif started:
                 count += 1
     return answer
 

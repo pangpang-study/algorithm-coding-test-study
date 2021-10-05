@@ -15,8 +15,6 @@ for i in range(w - 1):
         
         result += gap
     else:
-        if i == w - 1:
-            break
         height = min(array[i], max(array[i + 1:]))
 
 print(result)

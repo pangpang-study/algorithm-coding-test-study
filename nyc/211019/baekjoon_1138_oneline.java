@@ -5,8 +5,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         int N = Integer.parseInt(br.readLine());
-        Vector<Integer> people = new Vector<>();
-        Vector<Integer> result = new Vector<>();
+        ArrayList<Integer> people = new ArrayList<>();
+        LinkedList<Integer> result = new LinkedList<>();
 
         st = new StringTokenizer(br.readLine());
         for (int i=0; i<N; i++) {
@@ -20,11 +20,11 @@ public class Main {
                 if (idx == people.get(i)) break;
                 if (r > i+1) idx++;
             }
-            result.insertElementAt(i+1, idx);
+            result.add(idx, i+1);
         }
 
-        for (int i=0; i<N; i++) {
-            System.out.print(result.get(i) + " ");
+        for (Integer r : result) {
+            System.out.print(r + " ");
         }
     }
 }

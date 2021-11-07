@@ -1,43 +1,36 @@
-global result
-result = 0
-
-def recur(start):
-    global result
-    if start >= len(str):
-        return result
-
-    if str[start] == ')' or ']':
-        print(0)
-        exit()
-
-    elif str[start] == '(':
-        if str[start + 1] == ')':
-            result += 2
-            start += 2
-            recur(start)
-
-        elif str[start + 1] == '(' or '[':
-            start += 1
-            result += 2 * recur
-
-        else:
-            print(0)
-            exit()
-
+def recur(idx, pre):
+    count = 0
+    flag = True
+    while idx < len(str):
+        if str[idx] == ")":
+            if pre == "(":
+                if count == 0:
+                    count = 1
+                return 2 * count, idx + 1
+            else:
+                flag = False
+                break
+        if str[idx] == "]":
+            if pre == "[":
+                if count == 0:
+                    count = 1
+                return 3 * count, idx + 1
+            else:
+                flag = False
+                break
+        if str[idx] == "(" or "[":
+            inner, idx = recur(idx + 1, str[idx])
+            count += inner
+    if flag and pre == "":
+        print(count)
     else:
-        if str[start + 1] == ']':
-            result += 3
-            start += 2
-            recur(start)
+        print(0)
+    exit()
 
-        elif str[start + 1] == '(' or '[':
-            start += 1
-            result += 3 * recur
+import sys
 
-        else:
-            print(0)
-            exit()
+input = sys.stdin.readline
 
-str = str(input())
+str = list(input().rstrip())
 
-print(recur(0))
+recur(0, "")

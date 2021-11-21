@@ -18,19 +18,14 @@ def solution(cur):
         solution(cur+1)
         return
 
-    flag = False
     for i in range(len(eggs)):
         if i == cur or eggs[i][0] <= 0:
             continue
-        flag = True
         eggs[cur][0] -= eggs[i][1]
         eggs[i][0] -= eggs[cur][1]
         solution(cur+1)
         eggs[cur][0] += eggs[i][1]
         eggs[i][0] += eggs[cur][1]
-
-    if not flag:
-        solution(cur+1)
 
 
 if __name__ == "__main__":

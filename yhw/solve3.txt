@@ -1,0 +1,54 @@
+import java.util.*;
+public class Main {
+	static int n;
+	static int height[];
+	static boolean res = false;
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		height = new int[n];
+		for (int i = 0; i < n; i++) {
+			height[i] = sc.nextInt();
+		}
+		comb(0,0,new int[n]);
+	}
+	private static void comb(int idx, int flag, int[] per) {
+		if(idx == n) {
+			if(res)
+				return;
+			
+			int result[] = new int[n];
+			boolean isOk = false;
+			for (int i = 0; i < n; i++) {
+				if(i == 0) {
+					result[i] = 0;
+				}
+				else {
+					int cnt = 0;
+					for (int j = i-1; j >= 0; j--) 
+						if(per[i] < per[j]) cnt++;
+					result[i] = cnt;
+				}
+				
+				if(result[i] != height[per[i]-1]) {
+					isOk = true;
+					break;
+				}
+			}
+			
+			if(!isOk) {
+				res=true;
+				for(int number : per)
+				System.out.print(number + " ");
+			}
+				
+			return;
+		}
+		for (int i = 0; i < n; i++) {
+			if((flag&1<<i)!=0) continue;
+			per[idx] = i+1;
+			comb(idx+1,flag|1<<i,per);
+		}
+	}
+	
+}

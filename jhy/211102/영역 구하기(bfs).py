@@ -5,10 +5,10 @@ def bfs(i, j):
     while queue:
         y, x = queue.popleft()
         for dy, dx in d:
-            Y, X = y + dy, x + dx
-            if(0 <= X < n) and (0 <= Y < m) and graph[Y][X] == 0:
-                graph[Y][X] = 1
-                queue.append((Y, X))
+            ny, nx = y + dy, x + dx
+            if(0 <= nx < n) and (0 <= ny < m) and graph[ny][nx] == 0:
+                graph[ny][nx] = 1
+                queue.append((ny, nx))
                 count += 1
     
     return count

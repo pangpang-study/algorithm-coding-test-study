@@ -22,7 +22,7 @@ def fight(egg , idx , count):
         for i in range(n):
             if egg[i][0] <= 0 or i == idx:
                 continue
-            hit_flag = True;
+            hit_flag = True
             egg[idx][0] -= egg[i][1]
             egg[i][0] -= egg[idx][1]
             left =False

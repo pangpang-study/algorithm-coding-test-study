@@ -16,10 +16,6 @@ for _ in range(n):
     
 count = 0
 
-if k > n:
-    print(n)
-    exit()
-
 if k < 5:
     print(0)
 
@@ -38,7 +34,9 @@ else:
         not_default = set()
         for i in alphabets:
             not_default.update(i - default)
-        
+        if len(default) + len(not_default) <= k:
+            print(n)
+            exit()
         comb = list(combinations(not_default, k - 5))
         
         for i in range(len(comb)):

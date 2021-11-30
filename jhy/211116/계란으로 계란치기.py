@@ -27,7 +27,6 @@ def recur(idx, s):
     else:
         recur(idx + 1, s)
                 
-    
 input = sys.stdin.readline
 
 n = int(input())

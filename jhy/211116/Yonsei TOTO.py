@@ -1,3 +1,7 @@
+import sys
+
+input = sys.stdin.readline
+
 def get_sub(m, p, l, points):
     if p < l:
         if m >= 1:
@@ -14,10 +18,6 @@ def get_sub(m, p, l, points):
         if m >= point:
             result.append(point)
     return
-
-import sys
-
-input = sys.stdin.readline
 
 n, m = map(int, input().split())
 result = []

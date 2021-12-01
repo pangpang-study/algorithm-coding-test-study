@@ -27,4 +27,6 @@ while start <= end:
     else:
         start = result + 1
 
-print(end)
+answer = end
+
+print(answer)

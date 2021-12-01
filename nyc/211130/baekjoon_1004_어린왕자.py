@@ -6,12 +6,11 @@ def is_inside(cx, cy, x, y, r):
 
 
 def solution(x1, y1, x2, y2):
-    must = set()
-    for i in range(len(circles)):
-        cx, cy, r = circles[i]
+    answer = 0
+    for cx, cy, r in circles:
         if is_inside(cx, cy, x1, y1, r) != is_inside(cx, cy, x2, y2, r):
-            must.add(i)
-    return len(must)
+            answer += 1
+    return answer
 
 
 if __name__ == "__main__":

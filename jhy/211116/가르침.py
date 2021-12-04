@@ -20,35 +20,25 @@ if k < 5:
     print(0)
 
 else:
-    if n == 1:
-        print(1)
-        
-    elif k == 5:
-        for i in alphabets:
-            if len(i) == 5:
-                count += 1
+    answer = 0
     
-    else:
-        answer = 0
+    not_default = set()
+    for i in alphabets:
+        not_default.update(i - default)
         
-        not_default = set()
-        for i in alphabets:
-            not_default.update(i - default)
-        if len(default) + len(not_default) <= k:
-            print(n)
-            exit()
-        comb = list(combinations(not_default, k - 5))
+    if len(default) + len(not_default) <= k:
+        print(n)
+        exit()
         
-        for i in range(len(comb)):
-            result = 0
-            ele = set(comb[i])
-            #print("i: ", ele)
-            for j in alphabets:
-                #print("j: ", j)
-                if j & ele == j:
-                    #print(ele & j)
-                    result += 1
-            answer = max(answer, result)
-        #print("result: ", result)
-        
-        print(answer)
+    comb = list(combinations(not_default, k - 5))
+    #print("comb: ", comb)
+    for case in comb:
+        result = 0
+        for word in alphabets:
+            #print("set(case) - word: ", set(case) - word)
+            if word - set(case) == set():
+                result += 1
+        answer = max(answer, result)
+    #print("result: ", result)
+    
+    print(answer)

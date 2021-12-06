@@ -1,44 +1,33 @@
 import sys
 from itertools import combinations
 
-input = sys.stdin.readline
-
-n, k = map(int, input().split())
-
-alphabets= []
-default = {'a', 'n', 't', 'i', 'c'}
-
-for _ in range(n):
-    word = set(str(input().rstrip()))
-    word = word - default
-    alphabets.append(word)
-#print(alphabets)
-    
-count = 0
-
-if k < 5:
-    print(0)
-
-else:
+def solution(k):
     answer = 0
-    
-    not_default = set()
-    for i in alphabets:
-        not_default.update(i - default)
-        
-    if len(default) + len(not_default) <= k:
-        print(n)
-        exit()
-        
-    comb = list(combinations(not_default, k - 5))
-    #print("comb: ", comb)
-    for case in comb:
-        result = 0
-        for word in alphabets:
-            #print("set(case) - word: ", set(case) - word)
-            if word - set(case) == set():
-                result += 1
-        answer = max(answer, result)
-    #print("result: ", result)
-    
-    print(answer)
+    if k < 0:
+        return answer
+
+    bit_list = [2 ** i for i in range(21)]
+    for comb in combinations(bit_list, k):
+        count = 0
+        candidate = sum(comb)
+        for word in words:
+            if word & candidate == word:
+                count += 1
+        answer = max(answer, count)
+    return answer
+
+alpha_to_bit = {'b': 1, 'd': 2, 'e': 3, 'f': 4, 'g': 5,
+                'h': 6, 'j': 7, 'k': 8, 'l': 9, 'm': 10,
+                'o': 11, 'p': 12, 'q': 13, 'r': 14, 's': 15,
+                'u': 16, 'v': 17, 'w': 18, 'x': 19, 'y': 20, 
+                'z': 0}
+
+N, K = map(int, sys.stdin.readline().split())
+words = []
+reserved = ['a', 'n', 't', 'i', 'c']
+for _ in range(N):
+    tmp = 0
+    for e in set(sys.stdin.readline().rstrip()[4:-4]) - set(reserved):
+        tmp |= (1 << alpha_to_bit[e])
+    words.append(tmp)
+print(solution(K - 5))  

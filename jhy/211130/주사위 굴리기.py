@@ -17,7 +17,7 @@ direction = [
     (4, 1, 2, 0, 5, 3), # 북쪽
     (3, 1, 2, 5, 0, 4) # 남쪽
 ]
-# 윗면 0, 동 1, 서 2, 북 3, 남 4
+# 윗면 0, 동 1, 서 2, 북 3, 남 4, 바닥 5
 for command in commands:
     command -= 1
     x, y = x + dx[command], y + dy[command]

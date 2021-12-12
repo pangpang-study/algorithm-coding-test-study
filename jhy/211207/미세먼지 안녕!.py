@@ -32,9 +32,8 @@ def diffusion(room, top, bottom):
                 Arc += around
             
             copy_room[y][x] += Arc
-            #print(direction)
+
             for direct in direction.keys():
-                #print(direct, direction[direct])
                 if direction[direct]:
                     if direct == 'left':
                         copy_room[y][x - 1] += around
@@ -47,8 +46,7 @@ def diffusion(room, top, bottom):
                         
     for y in range(r):
         for x in range(c):
-            room[y][x] = copy_room[y][x]
-                            
+            room[y][x] = copy_room[y][x]                    
     return
 
 
@@ -62,7 +60,6 @@ def clean_top(top):
         route.append(room[0][x])
     for y in range(0,top):  #1열부터 청정기 윗부분까지
         route.append(room[y][0])
-    #print("route: ",route)
     
     room[top][1] = 0
     
@@ -74,7 +71,6 @@ def clean_top(top):
         room[0][x] = route.popleft()
     for y in range(0,top):
         room[y][0] = route.popleft()
-    #print("route: ",route)   
     return
 
 
@@ -88,7 +84,6 @@ def clean_bottom(bottom):
         route.append(room[r - 1][x])
     for y in range(r - 1,bottom,-1):
         route.append(room[y][0])
-    #print("route: ",route)
     
     room[bottom][1] = 0
     
@@ -100,7 +95,6 @@ def clean_bottom(bottom):
         room[r - 1][x] = route.popleft()
     for y in range(r - 1,bottom,-1):
         room[y][0] = route.popleft() 
-    #print("route: ",route)      
     return
     
 
@@ -119,7 +113,6 @@ def get_aircleaner_pos(r):
 
 def solution(r, c, t):
     top, bottom = get_aircleaner_pos(r)
-    #print(top, bottom)
     for time in range(t):
         diffusion(room ,top, bottom)
         clean_room(top, bottom)
@@ -128,7 +121,6 @@ def solution(r, c, t):
     
     for i in range(r):
         result += sum(room[i])
-    
     return result + 2
 
 

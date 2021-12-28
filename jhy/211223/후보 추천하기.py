@@ -24,6 +24,7 @@ def solution(n):
     for i in range(len(result)):
         print(result[i], end=" ")
 
+
 n = int(input())
 recommend = int(input())
 number = deque(map(int, input().split()))

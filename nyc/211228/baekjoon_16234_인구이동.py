@@ -57,7 +57,6 @@ if __name__ == "__main__":
         graph.append(list(map(int, sys.stdin.readline().rstrip().split())))
     count = 0
     while True:    # O(2000)
-        print(graph)
         if solution(N, L, R):       # O(2500)
             count += 1
         else:
